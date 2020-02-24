@@ -17,8 +17,11 @@ class SignUp extends Component {
             console.table(res);
         }).catch((err) => {
             console.log("Error: ", err);
-        })
+        });
+
+        window.location.href = "http://localhost:3000/login";
     };
+
 
 
 
@@ -51,7 +54,7 @@ class SignUp extends Component {
                                             <button type="button" className="cancelbtn"><Link to={"/login"} style={{color:"white"}}>Cancel</Link></button>
                                             <button type="submit" className="signupbtn" onClick={this.saveUser}>Sign Up</button>
                                         </div>
-                    </div>
+                                        </div>
                                     </div>
         )
     }

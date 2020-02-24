@@ -17,9 +17,12 @@ class Login extends Component{
         console.log(document.getElementById('use').value);
         console.log(document.getElementById('psw').value);
         console.log(form);
+        console.log(form.get('username'));
+        console.log(form.get('password'));
     axios.post("http://localhost:8080/user/login", form
 ).then(res => {
     console.log(res);
+    debugger;
     localStorage.setItem('username',res.data.username);
 }).catch((err) => {
     console.log("Error: ", err);

@@ -15,9 +15,9 @@ class Nav extends Component {
                 path: '/home'
             },
             {
-                label: 'Favourites',
+                label: 'Cart',
                 imgSrc: 'icon-point-contact.png',
-                path: '/favourites'
+                path: '/cart'
             }
         ],
 
