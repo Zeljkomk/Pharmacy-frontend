@@ -13,13 +13,9 @@ constructor(props) {
 componentDidMount() {
     var obj = this.props.match.params;
     let name = obj.name;
-    console.log(obj);
-    console.log(name);
-    debugger;
     let url = 'http://localhost:8080/home/details/'+name;
 
     axios.get(url).then(res =>{
-        debugger;
         console.log(res);
         this.setState({
             data:res.data
@@ -27,7 +23,6 @@ componentDidMount() {
     }).catch(err => {
         console.log(err)
     })
-    // console.log(this.state.data)
 }
 
     render() {

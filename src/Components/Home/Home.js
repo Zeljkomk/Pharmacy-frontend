@@ -12,22 +12,17 @@ class Home extends Component {
     }
 
     async componentDidMount() {
-        //debugger;
-        console.log(this.props.location.search)
         await axios.get("http://localhost:8080/home").then(res => {
-            console.log(res);
-            //console.log(res.data[0].genericName);
+            // console.log(res);
             this.setState({
                 data: res.data
             })
-            console.log(this.state.data);
         }).catch((err) => {
             console.log("Error: ", err);
         })
     }
 
     searchMedicine = () =>{
-        debugger;
         let inputSearch = document.getElementById('search').value;
         let url = 'http://localhost:8080/home/search/'+inputSearch;
 
@@ -43,7 +38,6 @@ class Home extends Component {
     findAllLiquid = () =>{
         let url ='http://localhost:8080/home/filter/10/liquid';
         axios.get(url).then(res=>{
-            debugger;
             console.log(res);
             this.setState({
                 data:res.data
@@ -55,7 +49,6 @@ class Home extends Component {
     findAllSolid = () =>{
         let url ='http://localhost:8080/home/filter/10/solid';
         axios.get(url).then(res=>{
-            debugger;
             console.log(res);
             this.setState({
                 data:res.data
@@ -93,7 +86,7 @@ class Home extends Component {
                             this.state.data.map((item,index)=>{
                                 let param = item.genericName;
                                 return(
-                                    <div className="col-lg-4 col-md-4 col-sm-4">
+                                    <div key={index} className="col-lg-4 col-md-4 col-sm-4">
                                     <div className="card m-2" style={{width: "18rem"}}>
                                                     <img className="card-img-top" src="https://www.clipartkey.com/mpngs/m/25-255092_pharmacy-capsule-logo-clipart-png-download-transparent-pharmacy.png" alt="" />
                                                     <div className="card-body">
