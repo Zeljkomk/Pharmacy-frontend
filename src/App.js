@@ -6,6 +6,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import Home from "./Components/Home/Home";
 import Cart from './Components/Cart/Cart';
 import Logout from './Components/Logout/Logout';
+import MedicineDetails from "./Components/Details/MedicineDetails";
 
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
                   <Route path="/logout" component={Logout}/>
                   <Route path="/signup" component={SignUp}/>
                   <Route path={"/cart"} component={Cart}/>
+                  <Route path={"/details/:name"} component={MedicineDetails}/>
               </BrowserRouter>
           );
       }

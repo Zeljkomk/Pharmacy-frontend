@@ -13,6 +13,7 @@ class Home extends Component {
 
     async componentDidMount() {
         //debugger;
+        console.log(this.props.location.search)
         await axios.get("http://localhost:8080/home").then(res => {
             console.log(res);
             //console.log(res.data[0].genericName);
@@ -90,12 +91,13 @@ class Home extends Component {
                     <div className="row">
                         {
                             this.state.data.map((item,index)=>{
+                                let param = item.genericName;
                                 return(
                                     <div className="col-lg-4 col-md-4 col-sm-4">
                                     <div className="card m-2" style={{width: "18rem"}}>
-                                                    <img className="card-img-top" src="https://www.clipartkey.com/mpngs/m/25-255092_pharmacy-capsule-logo-clipart-png-download-transparent-pharmacy.png" />
+                                                    <img className="card-img-top" src="https://www.clipartkey.com/mpngs/m/25-255092_pharmacy-capsule-logo-clipart-png-download-transparent-pharmacy.png" alt="" />
                                                     <div className="card-body">
-                                                        <h5 className="card-title"><a href="!#"> {item.genericName} </a></h5>
+                                                        <h5 className="card-title"><a href={"/details/"+param}> {item.genericName} </a></h5>
                                                         <p className="card-text">{item.description}</p>
                                                     </div>
 
