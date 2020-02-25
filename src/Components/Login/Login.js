@@ -41,7 +41,8 @@ class Login extends Component {
                         <img src={require("./index.jpeg")} alt="Avatar" className="avatar"/>
                     </div>
 
-                    <div className="container">
+                    <div className="container" onSubmit={this.checkUser}>
+                        <form>
                         <label htmlFor="uname"><b>Username</b></label>
                         <input type="text" id="use" placeholder="Enter Username" name="uname" required/>
 
@@ -49,7 +50,8 @@ class Login extends Component {
                         <input type="password" id="psw" placeholder="Enter Password" className={"mb-3"} name="psw"
                                required/>
 
-                        <button type="submit" onClick={this.checkUser}>Login</button>
+                        <button type="submit" >Login</button>
+                        </form>
                         <br/>
                         <label>
                             <br/>
@@ -58,7 +60,7 @@ class Login extends Component {
                     </div>
 
                     <div className="container" style={{backgroundColor: "#f1f1f1"}}>
-                        <p>Don't have account yet?<Link to={"/signup"}>Sign Up</Link></p>
+                        <p>Don't have account yet? <Link to={"/signup"}>Sign Up</Link></p>
                     </div>
                 </div>
             </div>

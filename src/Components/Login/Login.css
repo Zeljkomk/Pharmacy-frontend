@@ -62,4 +62,6 @@ span.psw {
         width: 100%;
     }
 }
-
+form {
+    border: 0px;
+}
