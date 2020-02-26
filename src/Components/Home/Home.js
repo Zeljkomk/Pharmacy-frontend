@@ -13,7 +13,7 @@ class Home extends Component {
 
     async componentDidMount() {
         await axios.get("http://localhost:8080/home").then(res => {
-            // console.log(res);
+            console.log(res);
             this.setState({
                 data: res.data
             })
@@ -58,10 +58,26 @@ class Home extends Component {
         })
     };
 
+    addToCart = (genericName) =>{
+        debugger;
+      let username = localStorage.getItem('username');
+        const form = new FormData();
+        form.set('username',username);
+        form.set('genericName',genericName);
+        axios.post("http://localhost:8080/cart/addToCart",form).then(res=>{
+            console.log(res);
+        }).catch(err=>{
+            console.log(err);
+        });
+
+    };
+
     render() {
         let najaven = localStorage.getItem('username');
+
+
         if (!this.state.data) {
-            return <Nav/>
+            return (<Nav/>)
         }
 
         return (
@@ -95,7 +111,7 @@ class Home extends Component {
                                                     </div>
 
                                                     <div className="card-body">
-                                                        {najaven ? <a href={"!#"} className="card-link btn btn-primary btn btn-primary">Add to Cart</a> :
+                                                        {najaven ? <button className="card-link btn btn-primary" onClick={()=>this.addToCart(item.genericName)} >Add to Cart</button> :
                                                             <a className="card-link btn btn-primary btn btn-primary btn btn-primary" href={"/login"}>Add to Cart </a>}
                                                     </div>
                                                 </div>
