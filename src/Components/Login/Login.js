@@ -15,8 +15,6 @@ class Login extends Component {
         form.set('password', document.getElementById('psw').value);
         axios.post("http://localhost:8080/user/login", form
         ).then(res => {
-            console.log(res);
-            debugger;
             localStorage.setItem('username', res.data.username);
         }).catch((err) => {
             console.log("Error: ", err);
@@ -34,7 +32,7 @@ class Login extends Component {
         return (
             <div>
                 <Nav></Nav>
-                <div className={"container"}>
+                <div className={"container"} style={{maxWidth:"600px"}}>
 
 
                     <div className="imgcontainer">

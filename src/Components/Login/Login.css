@@ -42,7 +42,7 @@ img.avatar {
 
 .container {
     padding: 16px;
-    max-width: 600px!important;
+    max-width: 600px;
 }
 h2{
     text-align: center;

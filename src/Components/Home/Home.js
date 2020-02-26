@@ -65,7 +65,8 @@ class Home extends Component {
         form.set('username',username);
         form.set('genericName',genericName);
         axios.post("http://localhost:8080/cart/addToCart",form).then(res=>{
-            console.log(res);
+            // console.log(res);
+            alert('You added medicine to your cart successfully')
         }).catch(err=>{
             console.log(err);
         });
