@@ -44,7 +44,7 @@ class Cart extends Component {
         return(
             <div>
                 <Nav/>
-                <h1 className="text-center">Welcome to your shopping cart {najaven}</h1>
+                <h1 className="text-center m-3">Welcome to your shopping cart {najaven}</h1>
                 <div className="container" style={{maxWidth:"1140px !important"}}>
 
                         <table className="table">

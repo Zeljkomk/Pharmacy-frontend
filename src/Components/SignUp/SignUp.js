@@ -17,10 +17,11 @@ class SignUp extends Component {
        let password =  document.getElementById('ps').value;
        let password_repeat =  document.getElementById('psr').value;
        let username = document.getElementById('us').value;
-       if(password === password_repeat && password.length >6 && username.length>5) {
-           this.setState({
-               nomatchps:null
-           });
+
+       // if(password === password_repeat && password.length >6 && username.length>5) {
+       //     this.setState({
+       //         nomatchps:null
+       //     });
            const form = new FormData();
            form.set('username', document.getElementById('us').value);
            form.set('password', document.getElementById('ps').value);
@@ -34,12 +35,12 @@ class SignUp extends Component {
 
            window.location.href = "http://localhost:3000/login";
 
-       } else{
-           if(password !== password_repeat && password.length < 6)
-            this.setState({nomatchps:"Enter same password with min 6 characters"})
-           if(username.length < 5)
-            this.setState({usermatch:"Enter valid username with min 5 characters"})
-       }
+       // } else{
+       //     if(password !== password_repeat && password.length < 6)
+       //      this.setState({nomatchps:"Enter same password with min 6 characters"})
+       //     if(username.length < 5)
+       //      this.setState({usermatch:"Enter valid username with min 5 characters"})
+       // }
    };
 
 
@@ -59,13 +60,13 @@ class SignUp extends Component {
 
                             <label htmlFor="username"><b>Username: </b></label>
                             <input type="text" id="us" placeholder="Enter Username" name="username" required/>
-                        {this.state.usermatch ? <p style={{color:"red"}}>{this.state.usermatch}</p>:<p></p>}
+                        {/*{this.state.usermatch ? <p style={{color:"red"}}>{this.state.usermatch}</p>:<p></p>}*/}
                                 <label htmlFor="psw"><b>Password</b></label>
                                 <input type="password" id='ps' placeholder="Enter Password" name="psw" required/>
 
                                     <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
                                     <input type="password" id='psr' placeholder="Repeat Password" name="psw-repeat" required/>
-                        {this.state.nomatchps ? <p style={{color:"red"}}>{this.state.nomatchps}</p>:<p></p>}
+                        {/*{this.state.nomatchps ? <p style={{color:"red"}}>{this.state.nomatchps}</p>:<p></p>}*/}
                                         <label>
                                             <input type="checkbox" name="remember"
                                                    style={{marginBottom:"15px"}}/> Remember me
