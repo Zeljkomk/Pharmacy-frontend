@@ -46,6 +46,29 @@ class Home extends Component {
             console.log(err )
         })
     };
+    sortAllAsc=()=>{
+        let url='http://localhost:8080/home/sort/10/asc';
+        axios.get(url).then(res=>{
+            console.log(res);
+            this.setState({
+                data:res.data
+            })
+        }).catch(err=>{
+            console.log(err )
+        })
+    };
+    sortAllDesc=()=>{
+        let url='http://localhost:8080/home/sort/10/desc';
+        axios.get(url).then(res=>{
+            console.log(res);
+            this.setState({
+                data:res.data
+            })
+        }).catch(err=>{
+            console.log(err )
+        })
+    };
+
     findAllSolid = () =>{
         let url ='http://localhost:8080/home/filter/10/solid';
         axios.get(url).then(res=>{
@@ -84,6 +107,7 @@ class Home extends Component {
         return (
             <div>
                 <Nav></Nav>
+
                 <div className="container" style={{minWidth: "1000px"}}>
                     <div className="row">
                     <div className="col-sm-4 col-md-4 col-lg-4">
@@ -95,17 +119,22 @@ class Home extends Component {
                                     </button>
                                 </div>
                         </div></div>
-                    <div className="col-sm-8 col-md-8 col-lg-8"><input className="btn btn-dark" type="submit" value="Liquid" onClick={this.findAllLiquid}/> <input className="btn btn-dark ml-2" type="submit" value="Solid" onClick={this.findAllSolid}/></div>
+                    <div className="col-sm-8 col-md-8 col-lg-8"><input className="btn btn-dark" type="submit" value="Liquid" onClick={this.findAllLiquid}/> <input className="btn btn-dark ml-2" type="submit" value="Solid" onClick={this.findAllSolid}/>     <input className="btn btn-primary" type="submit" value="Sort drugs Ascending" onClick={this.sortAllAsc}/>   <input className="btn btn-danger" type="submit" value="Sort drugs Descending" onClick={this.sortAllDesc}/>
+                    </div>
 
                     </div>
                     <div className="row">
                         {
                             this.state.data.map((item,index)=>{
                                 let param = item.genericName;
+                                let param1=item.aggregateState;
+                                console.log(param1);
+                                console.log(param);
                                 return(
                                     <div key={index} className="col-lg-4 col-md-4 col-sm-4">
+                                        {param1==="Liquid"?
                                     <div className="card m-2" style={{width: "18rem"}}>
-                                                    <img className="card-img-top" src="https://www.clipartkey.com/mpngs/m/25-255092_pharmacy-capsule-logo-clipart-png-download-transparent-pharmacy.png" alt="" />
+                                                    <img className="card-img-top" src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX2515222.jpg" alt="" width={40} height={220} />
                                                     <div className="card-body">
                                                         <h5 className="card-title"><a href={"/details/"+param}> {item.genericName} </a></h5>
                                                         <p className="card-text">{item.description}</p>
@@ -115,7 +144,21 @@ class Home extends Component {
                                                         {najaven ? <button className="card-link btn btn-primary" onClick={()=>this.addToCart(item.genericName)} >Add to Cart</button> :
                                                             <a className="card-link btn btn-primary btn btn-primary btn btn-primary" href={"/login"}>Add to Cart </a>}
                                                     </div>
-                                                </div>
+                                                </div>:
+
+                                        <div className="card m-2" style={{width: "18rem"}}>
+                                            <img className="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/0/00/FlattenedRoundPills.jpg" alt="" width={40} height={220} />
+                                            <div className="card-body">
+                                                <h5 className="card-title"><a href={"/details/"+param}> {item.genericName} </a></h5>
+                                                <p className="card-text">{item.description}</p>
+                                            </div>
+
+                                            <div className="card-body">
+                                                {najaven ? <button className="card-link btn btn-primary" onClick={()=>this.addToCart(item.genericName)} >Add to Cart</button> :
+                                                    <a className="card-link btn btn-primary btn btn-primary btn btn-primary" href={"/login"}>Add to Cart </a>}
+                                            </div>
+                                        </div>}
+
                                     </div>
                                 );
                             })
