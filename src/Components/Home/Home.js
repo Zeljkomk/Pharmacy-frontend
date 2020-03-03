@@ -13,7 +13,7 @@ class Home extends Component {
 
     async componentDidMount() {
         await axios.get("http://localhost:8080/home").then(res => {
-            console.log(res);
+            // console.log(res);
             this.setState({
                 data: res.data
             })

@@ -9,7 +9,6 @@ class Login extends Component {
 
 
     checkUser = () => {
-        // const history = useHistory();
         const form = new FormData();
         form.set('username', document.getElementById('use').value);
         form.set('password', document.getElementById('psw').value);
