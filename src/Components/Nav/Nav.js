@@ -13,21 +13,16 @@ class Nav extends Component {
                 label: 'Home',
                 imgSrc: 'icon-audit.png',
                 path: '/home'
-            },
-            {
-                label: 'Cart',
-                imgSrc: 'icon-point-contact.png',
-                path: '/cart'
             }
         ],
-
         itemsNenajaven: [
             {
                 label: 'Home',
                 imgSrc: 'icon-audit.png',
                 path: '/home'
             }
-        ]
+        ],
+        cart: '/cart'
     };
 
 
@@ -65,15 +60,27 @@ class Nav extends Component {
                             {
                                 this.state.najaven ?
                                     this.state.itemsAdmin.map((item, index) => {
-                                        return (
-                                            <NavLink key={index}
-                                                     style={{color: "white", fontSize: "initial", fontWeight: "bold"}}
-                                                     className="menu_menu" to={item.path}>                                                <span><img
-                                                key={index} className="img-icon ml-1"
-                                                src={require(`../../assets/images/dashboard_icons/${item.imgSrc}`)}
-                                                alt=""/></span>
-                                                {item.label}
-                                            </NavLink>
+                                        return (<div>
+                                                <NavLink key={index}
+                                                         style={{
+                                                             color: "white",
+                                                             fontSize: "initial",
+                                                             fontWeight: "bold"
+                                                         }}
+                                                         className="menu_menu" to={item.path}>                                                <span><img
+                                                    key={index} className="img-icon ml-1"
+                                                    src={require(`../../assets/images/dashboard_icons/${item.imgSrc}`)}
+                                                    alt=""/></span>
+                                                    {item.label}
+                                                </NavLink>
+                                                <a key={index}
+                                                   style={{color: "white", fontSize: "initial", fontWeight: "bold"}}
+                                                   className="menu_menu" href={'/cart'}>
+                                                    <img className="img-icon ml-1"
+                                                         src={require(`../../assets/images/dashboard_icons/icon-point-contact.png`)}
+                                                         alt=""/>
+                                                    Cart</a>
+                                            </div>
                                         );
                                     }) : this.state.itemsNenajaven.map((item, index) => {
                                         return (
@@ -82,7 +89,7 @@ class Nav extends Component {
                                                      className="menu_menu" to={item.path}>                                                <span><img
                                                 key={index} className="img-icon ml-1"
                                                 src={require(`../../assets/images/dashboard_icons/${item.imgSrc}`)}
-                                                alt=""/></span>
+                                                alt=""/> </span>
                                                 {item.label}
                                             </NavLink>
                                         );
@@ -96,15 +103,15 @@ class Nav extends Component {
 
                         </div>
                         {this.state.najaven ?
-                        <div className="navbar-nav ml-auto">
-                            <p className="nav-item nav-link" style={{
-                                color: "white",
-                                fontSize: "initial",
-                                fontWeight: "bold"
-                            }}>{this.state.najaven}</p>
-                            <a className="nav-item nav-link"
-                               style={{color: "white", fontSize: "initial", fontWeight: "bold"}}
-                               href="/logout">Logout</a> </div>:     <div className="navbar-nav ml-auto">
+                            <div className="navbar-nav ml-auto">
+                                <p className="nav-item nav-link" style={{
+                                    color: "white",
+                                    fontSize: "initial",
+                                    fontWeight: "bold"
+                                }}>{this.state.najaven}</p>
+                                <a className="nav-item nav-link"
+                                   style={{color: "white", fontSize: "initial", fontWeight: "bold"}}
+                                   href="/logout">Logout</a></div> : <div className="navbar-nav ml-auto">
                                 <p className="nav-item nav-link" style={{
                                     color: "white",
                                     fontSize: "initial",
@@ -113,16 +120,17 @@ class Nav extends Component {
                                 <a className="nav-item nav-link"
                                    style={{color: "white", fontSize: "initial", fontWeight: "bold"}}
                                    href="/signup">Sign Up</a> <a className="nav-item nav-link"
-                                                              style={{color: "white", fontSize: "initial", fontWeight: "bold"}}
-                                                              href="/login">Login</a> </div>
+                                                                 style={{
+                                                                     color: "white",
+                                                                     fontSize: "initial",
+                                                                     fontWeight: "bold"
+                                                                 }}
+                                                                 href="/login">Login</a></div>
 
-                                }
-
+                        }
                     </div>
                 </nav>
             </div>
-
-
         );
     }
 }
