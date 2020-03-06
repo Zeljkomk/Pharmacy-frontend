@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import './Home.css'
+import './../Home/Home.css'
 import Nav from "../Nav/Nav";
 import axios from 'axios';
 import {Link} from "react-router-dom";
 
-class Home extends Component {
+class Solid extends Component {
 
     constructor(props) {
         super(props);
@@ -14,7 +14,7 @@ class Home extends Component {
     }
 
     async componentDidMount() {
-        await axios.get("http://localhost:8080/home").then(res => {
+        await axios.get("http://localhost:8080/home/page/Liquid/1").then(res => {
             // console.log(res);
             this.setState({
                 data: res.data
@@ -34,58 +34,9 @@ class Home extends Component {
                 data: res.data
             })
         }).catch(err => {
-
+            console.log(err);
         })
     };
-
-    // sortAllAsc = () => {
-    //     let url = 'http://localhost:8080/home/sort/10/asc';
-    //     axios.get(url).then(res => {
-    //         console.log(res);
-    //         this.setState({
-    //             data: res.data
-    //         })
-    //     }).catch(err => {
-    //         console.log(err)
-    //     })
-    // };
-    // sortAllDesc = () => {
-    //     let url = 'http://localhost:8080/home/sort/10/desc';
-    //     axios.get(url).then(res => {
-    //         console.log(res);
-    //         this.setState({
-    //             data: res.data
-    //         })
-    //     }).catch(err => {
-    //         console.log(err)
-    //     })
-    // };
-    findAllLiquid = () => {
-        let url = 'http://localhost:8080/home/filter/10/liquid';
-        axios.get(url).then(res => {
-            console.log(res);
-            this.setState({
-                data: res.data
-
-            })
-        }).catch(err => {
-            console.log(err)
-        })
-    };
-
-    findAllSolid = () => {
-        let url = 'http://localhost:8080/home/filter/10/solid';
-        axios.get(url).then(res => {
-            console.log(res);
-            this.setState({
-                data: res.data
-            })
-        }).catch(err => {
-            console.log(err)
-        })
-    };
-
-
 
     addToCart = (genericName) => {
         debugger;
@@ -105,10 +56,10 @@ class Home extends Component {
     pagination = (e) =>{
         debugger;
         let page = e.target.innerText;
-        axios.get("http://localhost:8080/home/page/"+page).then(res=>{
+        axios.get("http://localhost:8080/home/page/Liquid/"+page).then(res=>{
             this.setState({
                 data:res.data
-            })
+            });
             console.log(res);
         }).catch(err=>{
             console.log(err);
@@ -139,8 +90,10 @@ class Home extends Component {
                             </div>
                         </div>
                         <div className="col-sm-8 col-md-8 col-lg-8">
-                            <a href="liquid"> <input className="btn btn-dark" type="submit" value="Liquid"/></a>
-                            <a href="solid"><input className="btn btn-dark ml-2" type="submit" value="Solid"/></a>
+                            <Link to={"/liquid"}><input className="btn btn-dark" type="submit" value="Liquid"/></Link>
+                            <Link to={"/solid"}><input className="btn btn-dark ml-2" type="submit" value="Solid"/></Link>
+                            {/*<input className="btn btn-dark" type="submit" value="Liquid" onClick={this.findAllLiquid}/>*/}
+                            {/*<input className="btn btn-dark ml-2" type="submit" value="Solid" onClick={this.findAllSolid}/>*/}
                         </div>
 
                     </div>
@@ -196,23 +149,23 @@ class Home extends Component {
                         }
 
                     </div>
-                        <div className="text-center">
-                            <nav aria-label="Page navigation example">
-                                <ul className="pagination">
+                    <div className="text-center">
+                        <nav aria-label="Page navigation example">
+                            <ul className="pagination">
 
-                                    <li className="page-item"><a className="page-link" style={{color:"#007bff"}} onClick={(e)=>this.pagination(e)}>1</a></li>
-                                    <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>2</a></li>
-                                    <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>3</a></li>
-                                    <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>4</a></li>
-                                    <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>5</a></li>
-                                    <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>6</a></li>
-                                    <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>7</a></li>
-                                    <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>8</a></li>
-                                    <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>9</a></li>
-                                    <li className="page-item"><a className="page-link"  onClick={(e)=>this.pagination(e)}>10</a></li>
-                    </ul>
-                            </nav>
-                        </div>
+                                <li className="page-item"><a className="page-link" style={{color:"#007bff"}} onClick={(e)=>this.pagination(e)}>1</a></li>
+                                <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>2</a></li>
+                                <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>3</a></li>
+                                <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>4</a></li>
+                                <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>5</a></li>
+                                <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>6</a></li>
+                                <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>7</a></li>
+                                <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>8</a></li>
+                                <li className="page-item"><a className="page-link" onClick={(e)=>this.pagination(e)}>9</a></li>
+                                <li className="page-item"><a className="page-link"  onClick={(e)=>this.pagination(e)}>10</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
 
             </div>
@@ -222,4 +175,4 @@ class Home extends Component {
 
 }
 
-export default Home;
+export default Solid;
